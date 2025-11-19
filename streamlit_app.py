@@ -407,7 +407,7 @@ st.markdown(
 )
 
 flat_file = st.file_uploader(
-    "Upload Flat Substitution File",
+    "",
     type=["txt", "tsv", "xlsx", "xls", "csv"],
     key="flat_file",
     help=(
@@ -415,7 +415,9 @@ flat_file = st.file_uploader(
         " • headerless, tab-delimited with columns RECORD | question | value, or\n"
         " • an already-parsed pairs file like the Substitution Example."
     ),
+    label_visibility="collapsed",
 )
+
 st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -441,14 +443,21 @@ if flat_file is not None:
 # --- STEP 2: UPLOAD ATTRIBUTE TABLE ------------------------------------------
 st.markdown('<div class="section-card">', unsafe_allow_html=True)
 
-col_step2, col_btn2, col_spacer2 = st.columns([2, 1, 8])
+st.markdown(
+    '<div class="section-title"><span class="step-badge">2</span>'
+    'Upload Attribute Table</div>',
+    unsafe_allow_html=True,
+)
 
 attr_file = st.file_uploader(
-    "Upload Attribute Table",
+    "",
     type=["xlsx", "xls", "csv", "tsv", "txt"],
     key="attr_file",
+    label_visibility="collapsed",
 )
+
 st.markdown("</div>", unsafe_allow_html=True)
+
 
 attr_df = None
 if attr_file is not None:
